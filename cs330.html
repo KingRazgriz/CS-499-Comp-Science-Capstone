@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS-330 Narrative | Jamar Sampson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-logo">JS</span>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#artifacts">Artifacts</a></li>
+      <li><a href="../index.html#code-review">Code Review</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="narrative-header">
+    <div class="container">
+      <a href="../index.html#artifacts" class="narrative-back">← Back to Artifacts</a>
+      <p class="section-eyebrow">Software Design &amp; Engineering · CS-330</p>
+      <h1 class="section-title">3D Scene — OpenGL Rendering Engine</h1>
+      <p class="section-intro">
+        An OpenGL 4.6 / C++17 3D scene enhanced from a base kitchen layout into a fully lit, Skyrim-inspired environment with modular architecture, memory-safe rendering, and real transparency effects.
+      </p>
+    </div>
+  </div>
+
+  <div class="narrative-body">
+    <div class="container">
+
+      <h2>Artifact Description</h2>
+      <p>
+        This artifact is a 3D rendering project originally built for CS-330: Computational Graphics and Visualization. Using OpenGL 4.6, C++17, GLFW, GLEW, and the GLM mathematics library, I constructed a scene of objects resting on a stone paver floor. The original version included a peanut can, mixing bowl, and syrup bottle. My enhancements added a five-part modeled wine glass (base cylinder, stem cylinder, stem knob sphere, tapered bowl, torus rim, and a transparent dark red wine sphere) and a five-part candle (wax cylinder, wick, tapered flame body, flame tip sphere, and a wide amber cylinder simulating a glowing floor effect).
+      </p>
+
+      <h2>Why I Selected This Artifact</h2>
+      <p>
+        I selected this project because it showcases a wide range of technical competencies relevant to software development: 3D mathematics for modeling and projection, shader programming, interactive camera systems, memory management, and debugging at the graphics driver level. These skills are transferable to game development, simulation, visualization tools, and any domain requiring real-time rendering.
+      </p>
+      <p>
+        The honest starting point also matters. I had to re-enter a codebase that had broken in the time since the original course — reacquiring dependencies, rebuilding the environment, and resolving initialization-order crashes. That process, not just the final result, demonstrates professional maturity.
+      </p>
+
+      <h2>Enhancements Implemented</h2>
+      <ul>
+        <li>Fixed critical memory leak: replaced incorrect <code>glGenTextures</code> call in the cleanup path with the correct <code>glDeleteTextures</code></li>
+        <li>Implemented three-point lighting with warm and cool color mixing for more realistic shading on reflective surfaces</li>
+        <li>Added scroll-wheel zoom to the free-flying camera for intuitive scene navigation</li>
+        <li>Designed and built a five-component wine glass using hierarchical object composition</li>
+        <li>Engineered alpha blending with correct render order: opaque objects first, translucent objects (wine sphere, amber glow cylinder) rendered after blending is enabled</li>
+        <li>Modeled five-component candle with stacked geometry aligned using camera clipping plane adjustments to eliminate gaps</li>
+        <li>Added shader and texture path validation with descriptive error output on failure</li>
+        <li>Refactored code into modular files: SceneManager, ShaderManager, Camera — each with a single clear responsibility</li>
+      </ul>
+
+      <h2>Course Outcomes Addressed</h2>
+      <div class="outcomes-grid">
+        <div class="outcome-item">
+          <h4>Collaborative Environments</h4>
+          <p>Modular file structure (SceneManager, ShaderManager, Camera) allows new contributors to extend the scene without touching unrelated systems.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Algorithmic Principles</h4>
+          <p>Alpha blending render order and point-light attenuation formula demonstrate physics-based algorithmic reasoning, not arbitrary choices.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Innovative Techniques</h4>
+          <p>Scroll-wheel zoom and the candle glow effect (a flat translucent cylinder) are simple but effective solutions that avoid expensive post-processing.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Security Mindset</h4>
+          <p>All shader and texture file paths are validated at load time; failures produce explicit error messages so no issue goes silently unnoticed.</p>
+        </div>
+      </div>
+
+      <h2>Reflection</h2>
+      <p>
+        The most important lesson from this enhancement was about initialization order. GLEW must be initialized after an OpenGL context exists; calling it before produced null function pointers that caused hard-to-trace crashes. This kind of system-level dependency isn't visible in the code itself — it requires understanding the runtime environment, which is exactly the kind of knowledge that separates working code from production-ready code.
+      </p>
+      <p>
+        Three-point lighting reinforced how much visual quality comes from color theory, not raw computation. Blending warm and cool light sources is the difference between a flat-looking scene and one that reads as believable. And transparency — specifically the wine glass — taught me that rendering order is not an implementation detail but a fundamental part of the algorithm.
+      </p>
+      <p>
+        Re-entering the project after a year away and making it run again was arguably the most professionally relevant part of the process.
+      </p>
+
+    </div>
+  </div>
+
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-name">Jamar Sampson</p>
+        <p class="footer-sub">Bachelor of Computer Science · Software Development · SNHU 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/KingRazgriz" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Jamar Sampson. Built for CS-499 Capstone.</p>
+  </footer>
+
+</body>
+</html>

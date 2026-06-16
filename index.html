@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamar Sampson | CS ePortfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav-logo">JS</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#artifacts">Artifacts</a></li>
+      <li><a href="#code-review">Code Review</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Bachelor of Computer Science · Software Development</p>
+      <h1 class="hero-name">Jamar Sampson</h1>
+      <p class="hero-tagline">Building purposeful software — from 3D scenes to data pipelines to service architectures.</p>
+      <div class="hero-cta">
+        <a href="#artifacts" class="btn btn-primary">View Artifacts</a>
+        <a href="https://github.com/KingRazgriz" target="_blank" class="btn btn-outline">GitHub Profile</a>
+      </div>
+    </div>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+  </header>
+
+  <!-- SELF-ASSESSMENT -->
+  <section id="about" class="section section-dark">
+    <div class="container">
+      <p class="section-eyebrow">Professional Self-Assessment</p>
+      <h2 class="section-title">Who I Am &amp; Where I'm Going</h2>
+      <div class="assessment-body">
+        <p>
+          Completing the Computer Science program at SNHU has been more than an academic exercise — it has been a structured process of building the habits, instincts, and technical foundations that define a professional software developer. I entered the program with curiosity and leave it with a clearer identity: a software developer who values honest craftsmanship, systematic debugging, and the discipline to revisit earlier work with fresh eyes.
+        </p>
+        <p>
+          The three artifacts in this ePortfolio tell that story directly. My CS-330 OpenGL project demonstrates software design and engineering — rebuilding a 3D scene from scratch, resolving memory leaks, implementing three-point lighting, and engineering transparency effects for a wine glass and candle. My CS-320 Java service system demonstrates algorithms and data structures — replacing inefficient ArrayList lookups with HashMap-backed services and introducing real search, sort, and filter capabilities that make the system genuinely useful. My CS-340 MongoDB dashboard demonstrates databases — moving from static CSV files to a live Atlas cluster, designing compound indexes matched to real query patterns, and building server-side aggregation pipelines that shift computation where it belongs.
+        </p>
+        <p>
+          Across all three, I encountered the same recurring lesson: understanding how the pieces of a system connect is just as important as the logic written within them. Dependency mismatches in Python broke a working dashboard. A misplaced static field in Java caused tests to corrupt each other. An OpenGL initialization order caused null function pointers. Each failure forced me to slow down, trace the system, and reason carefully — exactly the skills that matter in production environments.
+        </p>
+        <p>
+          My concentration in Software Development has shaped how I approach problems. I think about modularity first — code should be written so that a new team member can extend one piece without breaking another. I think about trade-offs honestly — a fast database query does not mean a fast application if the frontend can't handle the data volume. And I think about maintenance as a first-class concern — dependencies that are correct today become bugs tomorrow, and the ability to re-enter an old codebase and make it run again is a skill in itself.
+        </p>
+        <p>
+          Looking forward, I am particularly attentive to the rise of generative AI as a collaborative development tool and edge computing as a deployment reality. Both reinforce the same conclusion: strong fundamentals — data structures, system thinking, clear communication of code intent — become <em>more</em> valuable as tooling accelerates, not less. This portfolio is my evidence that those fundamentals are in place.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIFACTS -->
+  <section id="artifacts" class="section">
+    <div class="container">
+      <p class="section-eyebrow">Enhanced Artifacts</p>
+      <h2 class="section-title">Three Categories. Three Demonstrations.</h2>
+      <div class="artifact-grid">
+
+        <!-- CS-330 -->
+        <article class="artifact-card">
+          <div class="artifact-tag">Software Design &amp; Engineering</div>
+          <div class="artifact-course">CS-330</div>
+          <h3 class="artifact-title">3D Scene — OpenGL Rendering Engine</h3>
+          <p class="artifact-desc">
+            A fully modeled 3D scene built with OpenGL 4.6, C++17, GLFW, GLEW, and GLM. Enhanced from a base kitchen layout into a Skyrim-inspired tavern scene featuring a five-part wine glass with transparent wine, a multi-part candle with a glowing floor effect, three-point lighting, and a free-flying camera with scroll-wheel zoom.
+          </p>
+          <ul class="artifact-highlights">
+            <li>Fixed critical memory leak (<code>glGenTextures</code> → <code>glDeleteTextures</code>)</li>
+            <li>Implemented alpha blending with correct render order for transparency</li>
+            <li>Modular file structure: SceneManager, ShaderManager, Camera</li>
+            <li>Shader/texture validation with descriptive error messages</li>
+          </ul>
+          <a href="narratives/cs330.html" class="artifact-link">Read Narrative →</a>
+        </article>
+
+        <!-- CS-320 -->
+        <article class="artifact-card">
+          <div class="artifact-tag">Algorithms &amp; Data Structures</div>
+          <div class="artifact-course">CS-320</div>
+          <h3 class="artifact-title">Java Service System — Contact, Task &amp; Appointment Management</h3>
+          <p class="artifact-desc">
+            A Java-based management system originally built with three service modules (ContactService, TaskService, AppointmentService). Enhanced by replacing static ArrayList storage with HashMap-backed services and introducing search, sort, and filter capabilities including keyword search, alphabetical sorting, and date-range filtering.
+          </p>
+          <ul class="artifact-highlights">
+            <li>Replaced ArrayList O(n) lookups with HashMap O(1) operations</li>
+            <li>Java Streams for search, sort, and date-range filtering</li>
+            <li>Full JUnit 5 test coverage maintained throughout refactor</li>
+            <li>Resolved static shared-state bug causing test interference</li>
+          </ul>
+          <a href="narratives/cs320.html" class="artifact-link">Read Narrative →</a>
+        </article>
+
+        <!-- CS-340 -->
+        <article class="artifact-card">
+          <div class="artifact-tag">Databases</div>
+          <div class="artifact-course">CS-340</div>
+          <h3 class="artifact-title">Grazioso Salvare Animal Rescue Dashboard</h3>
+          <p class="artifact-desc">
+            A Python/Dash dashboard backed by MongoDB, originally using basic find() queries against a static CSV. Enhanced to connect to a live MongoDB Atlas cluster with a CRUD module featuring compound indexes, server-side aggregation pipelines for statistics, and a dynamic multi-filter search that assembles queries at runtime.
+          </p>
+          <ul class="artifact-highlights">
+            <li>Compound indexes on animal type + breed matching real query patterns</li>
+            <li>Aggregation pipelines: breed statistics and rescue summaries computed server-side</li>
+            <li>Dynamic <code>advanced_search()</code> pipeline assembled from runtime filter state</li>
+            <li>Migrated from <code>jupyter_dash</code> (deprecated) to current Dash API</li>
+          </ul>
+          <a href="narratives/cs340.html" class="artifact-link">Read Narrative →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE REVIEW -->
+  <section id="code-review" class="section section-dark">
+    <div class="container">
+      <p class="section-eyebrow">Informal Code Review</p>
+      <h2 class="section-title">Planning the Enhancements</h2>
+      <p class="section-intro">
+        Before any enhancements were written, I produced a walkthrough of the original artifacts — analyzing existing functionality, identifying structural and logic issues, and outlining the specific improvements planned for each of the three course categories.
+      </p>
+      <div class="video-placeholder">
+        <div class="video-inner">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2"/>
+            <polygon points="19,16 35,24 19,32" fill="currentColor"/>
+          </svg>
+          <p>Code Review Video</p>
+          <p class="video-note">Upload your MP4 to YouTube or a hosting service, then replace this placeholder with an embedded player or link.</p>
+        </div>
+      </div>
+      <div class="review-pillars">
+        <div class="pillar">
+          <span class="pillar-label">01</span>
+          <h4>Existing Functionality</h4>
+          <p>Detailed walkthrough of each artifact's features before any changes were made.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-label">02</span>
+          <h4>Code Analysis</h4>
+          <p>Targeted areas: structure, logic, efficiency, security, testing, and documentation.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-label">03</span>
+          <h4>Enhancement Plan</h4>
+          <p>Specific improvements mapped to the five course outcomes across all three categories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-name">Jamar Sampson</p>
+        <p class="footer-sub">Bachelor of Computer Science · Software Development · SNHU 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/KingRazgriz" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Jamar Sampson. Built for CS-499 Capstone.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

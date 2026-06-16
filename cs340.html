@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS-340 Narrative | Jamar Sampson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-logo">JS</span>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#artifacts">Artifacts</a></li>
+      <li><a href="../index.html#code-review">Code Review</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="narrative-header">
+    <div class="container">
+      <a href="../index.html#artifacts" class="narrative-back">← Back to Artifacts</a>
+      <p class="section-eyebrow">Databases · CS-340</p>
+      <h1 class="section-title">Grazioso Salvare Animal Rescue Dashboard</h1>
+      <p class="section-intro">
+        A Python/Dash dashboard backed by MongoDB, enhanced from basic CSV-backed find() queries to a live Atlas cluster with compound indexes, server-side aggregation pipelines, and a dynamic multi-filter search system.
+      </p>
+    </div>
+  </div>
+
+  <div class="narrative-body">
+    <div class="container">
+
+      <h2>Artifact Description</h2>
+      <p>
+        This artifact is the Grazioso Salvare Animal Rescue Dashboard, originally developed for CS-340: Client/Server Development. It is a Python application using the Dash web framework, running in Jupyter notebooks, with MongoDB as its data layer. The original version used basic <code>find()</code> queries against an in-memory pandas DataFrame loaded from a static dataset. The dashboard allowed users to filter rescue animals by breed and view results on an interactive geo-map.
+      </p>
+      <p>
+        For this enhancement, I rebuilt the MongoDB CRUD module and migrated the entire application from a static CSV to a live MongoDB Atlas cluster, then designed and implemented indexes, aggregation pipelines, and a dynamic multi-filter search system.
+      </p>
+
+      <h2>Why I Selected This Artifact</h2>
+      <p>
+        This project was selected because it provides a realistic path from beginner database usage — basic CRUD, no indexing, no server-side computation — to professional database design. The progression from <code>find()</code> queries with pandas post-processing to compound indexes and aggregation pipelines is the same progression that appears in real production systems when query performance starts to matter.
+      </p>
+      <p>
+        It also gave me the opportunity to work in a live environment rather than a sandboxed one, provisioning a real Atlas cluster, creating users, configuring network access, and troubleshooting authentication — all skills that don't appear in coursework but appear on day one of a real job.
+      </p>
+
+      <h2>Enhancements Implemented</h2>
+      <ul>
+        <li><code>create_indexes()</code>: single-field indexes on animal type, breed, sex, and age; compound index on animal type + breed matching the dashboard's most common query pattern</li>
+        <li><code>get_breed_statistics()</code>: aggregation pipeline computing breed counts and average ages server-side, replacing equivalent pandas operations in Python</li>
+        <li><code>get_rescue_summary()</code>: aggregation pipeline summarizing outcomes by rescue category, computed in the database</li>
+        <li><code>advanced_search()</code>: dynamically assembles a single aggregation pipeline from runtime filter state — whichever combination of animal type, breed, sex, and age range the user selects becomes one pipeline, not chained separate queries</li>
+        <li>Migrated from <code>jupyter_dash</code> (incompatible with current Dash) to the current API: <code>Dash(__name__)</code> and <code>app.run(jupyter_mode=...)</code></li>
+        <li>Connected dashboard to live MongoDB Atlas cluster with proper credential management and network access configuration</li>
+        <li>Verified each new CRUD method independently against the live collection before wiring into Dash callbacks</li>
+      </ul>
+
+      <h2>Course Outcomes Addressed</h2>
+      <div class="outcomes-grid">
+        <div class="outcome-item">
+          <h4>Algorithmic Solutions</h4>
+          <p>Index design was reasoned against real query patterns. Compound vs. single-field index choice reflects genuine trade-off analysis, not defaults.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Managing Trade-offs</h4>
+          <p>Testing against the full 10,000-record dataset revealed that fast database queries did not mean a fast application — browser-side data table rendering was the bottleneck. A 500-record working subset was used and documented.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Well-Founded Techniques</h4>
+          <p>Using MongoDB's aggregation framework instead of Python pandas reflects the industry-standard principle: compute where the data lives.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Innovative Tools</h4>
+          <p>Dynamic pipeline assembly in <code>advanced_search()</code> uses MongoDB's composable aggregation model as a first-class design tool, not an afterthought.</p>
+        </div>
+      </div>
+
+      <h2>Reflection</h2>
+      <p>
+        The most valuable outcome of this enhancement was learning what happens when two parts of a system that work independently fail together. The MongoDB queries were fast. The aggregation pipelines were correct. And the dashboard was still slow because the Dash data table couldn't render 10,000 rows in the browser without stalling. A fast database does not mean a fast application — that lesson, encountered concretely rather than theoretically, is one I will not forget.
+      </p>
+      <p>
+        The dependency migration also reinforced something important about maintenance. <code>jupyter_dash</code> was correct when the original project was built. A year later it produced a cryptic <code>AttributeError</code> inside a third-party library, with no obvious connection to the actual problem. Debugging it required understanding what <code>jupyter_dash</code> was doing and why the current Dash version no longer needed it. That kind of reasoning — about system evolution over time, not just the system as it exists today — is what distinguishes maintenance-capable engineers.
+      </p>
+      <p>
+        The process of provisioning a real Atlas cluster, creating database users, configuring IP access lists, and debugging authentication from scratch also gave me hands-on experience with the operational side of database management that coursework environments abstract away entirely.
+      </p>
+
+    </div>
+  </div>
+
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-name">Jamar Sampson</p>
+        <p class="footer-sub">Bachelor of Computer Science · Software Development · SNHU 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/KingRazgriz" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Jamar Sampson. Built for CS-499 Capstone.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS-320 Narrative | Jamar Sampson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-logo">JS</span>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#artifacts">Artifacts</a></li>
+      <li><a href="../index.html#code-review">Code Review</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="narrative-header">
+    <div class="container">
+      <a href="../index.html#artifacts" class="narrative-back">← Back to Artifacts</a>
+      <p class="section-eyebrow">Algorithms &amp; Data Structures · CS-320</p>
+      <h1 class="section-title">Java Service System — Contact, Task &amp; Appointment Management</h1>
+      <p class="section-intro">
+        A Java management system refactored from static ArrayList storage to HashMap-backed services, with search, sort, and date-range filtering implemented using Java Streams and full JUnit 5 test coverage maintained throughout.
+      </p>
+    </div>
+  </div>
+
+  <div class="narrative-body">
+    <div class="container">
+
+      <h2>Artifact Description</h2>
+      <p>
+        This artifact is a Java-based management system built in CS-320: Software Testing, Automation, and Quality Assurance. The original project consisted of three service modules — <code>ContactService</code>, <code>TaskService</code>, and <code>AppointmentService</code> — each handling a different type of record with support for adding, retrieving, and deleting entries. Testing was performed in Eclipse with Maven and JUnit 5, validating field constraints and confirming correct behavior for valid and invalid inputs. The original code worked but was limited: no search, sort, or filtering capabilities, and a structural flaw in <code>ContactService</code> that caused tests to interfere with each other.
+      </p>
+
+      <h2>Why I Selected This Artifact</h2>
+      <p>
+        I chose this artifact because it represents an honest starting point rather than a polished one. The original code had real structural problems — a static shared <code>ArrayList</code> used as instance storage, O(n) lookups on every read/delete, and no ability to query records meaningfully. That made it a better demonstration of growth than something already optimized.
+      </p>
+      <p>
+        The refactoring process required me to understand not just how to write better code, but why the original design failed at the system level. A static field shared across every class instance is not visible as a bug until tests start corrupting each other — and then it becomes obvious, fast.
+      </p>
+
+      <h2>Enhancements Implemented</h2>
+      <ul>
+        <li>Replaced <code>ArrayList</code> storage in all three services with <code>HashMap&lt;String, T&gt;</code>, reducing lookup, insert, and delete operations from O(n) to O(1)</li>
+        <li>Resolved static shared-state bug in <code>ContactService</code> that caused test runs to interfere with each other</li>
+        <li>Implemented keyword search by name (contacts), description (tasks), and description (appointments) using Java Streams</li>
+        <li>Added alphabetical sort by last name for contacts</li>
+        <li>Added appointment search by date and date-range filter returning only upcoming appointments within a configurable window</li>
+        <li>Maintained full JUnit 5 test coverage throughout the refactor — including tests that check actual return values, not just that objects were created</li>
+        <li>Refactored <code>ContactService</code> to separate data record, storage, and service logic into distinct responsibilities</li>
+      </ul>
+
+      <h2>Course Outcomes Addressed</h2>
+      <div class="outcomes-grid">
+        <div class="outcome-item">
+          <h4>Algorithmic Principles</h4>
+          <p>HashMap selection over ArrayList was a deliberate complexity decision — O(1) vs O(n) — reasoned against the actual access patterns of the service layer.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Well-Founded Techniques</h4>
+          <p>Java Streams for filtering and sorting are idiomatic, readable, and maintainable — the right tool for collection processing in modern Java.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Software Quality</h4>
+          <p>Full JUnit 5 coverage with value-checking assertions (not just creation assertions) enforces correctness and catches regressions across the refactor.</p>
+        </div>
+        <div class="outcome-item">
+          <h4>Collaborative Environments</h4>
+          <p>Separating data record, storage, and service logic makes each layer independently understandable and testable by any team member.</p>
+        </div>
+      </div>
+
+      <h2>Reflection</h2>
+      <p>
+        The most instructive moment of this enhancement was discovering how much the original design resisted testing. The static ArrayList in <code>ContactService</code> meant that every test shared state with every other test. Tests passed in isolation and failed in sequence — a bug that only appears at integration time is one of the hardest categories to diagnose, and it was caused by a single keyword (<code>static</code>) in the wrong place.
+      </p>
+      <p>
+        Cleaning up the class structure — separating what a Contact <em>is</em> from where Contacts <em>live</em> from how Contacts are <em>accessed</em> — made the underlying logic obvious in a way that reading the original code did not. The Appointment class had methods that looked functional but silently returned null; only tests that checked actual return values revealed them.
+      </p>
+      <p>
+        The re-setup process (redownloading Eclipse, reconciling a mismatched Maven folder structure from GitHub) also reinforced that getting a project to build again after time away is a real skill — and one that matters in professional environments where you are not always working on code you wrote.
+      </p>
+
+    </div>
+  </div>
+
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-name">Jamar Sampson</p>
+        <p class="footer-sub">Bachelor of Computer Science · Software Development · SNHU 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/KingRazgriz" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Jamar Sampson. Built for CS-499 Capstone.</p>
+  </footer>
+
+</body>
+</html>
