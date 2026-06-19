@@ -4,18 +4,18 @@
    ============================================================ */
 
 :root {
-  --bg:         #0d0f14;
-  --bg-dark:    #080a0e;
-  --bg-card:    #13161e;
-  --border:     #1e2330;
-  --accent:     #4f8ef7;
-  --accent-dim: #1e3a6e;
+  --bg:         #0f0608;
+  --bg-dark:    #080305;
+  --bg-card:    #160a0b;
+  --border:     #2e1215;
+  --accent:     #e03535;
+  --accent-dim: #5a1515;
   --text:       #e2e6f0;
   --text-muted: #7a8299;
-  --text-dim:   #3d4460;
-  --tag-1:      #4f8ef7;   /* software design */
-  --tag-2:      #36c992;   /* algorithms */
-  --tag-3:      #f7834f;   /* databases */
+  --text-dim:   #4a2020;
+  --tag-1:      #e03535;   /* software design */
+  --tag-2:      #e07a35;   /* algorithms */
+  --tag-3:      #c9365a;   /* databases */
   --radius:     8px;
   --font-sans:  'Space Grotesk', sans-serif;
   --font-mono:  'Space Mono', monospace;
@@ -257,9 +257,9 @@ a:hover { text-decoration: underline; }
   align-self: flex-start;
 }
 
-.artifact-card:nth-child(1) .artifact-tag { background: rgba(79,142,247,0.15); color: var(--tag-1); }
-.artifact-card:nth-child(2) .artifact-tag { background: rgba(54,201,146,0.15); color: var(--tag-2); }
-.artifact-card:nth-child(3) .artifact-tag { background: rgba(247,131,79,0.15); color: var(--tag-3); }
+.artifact-card:nth-child(1) .artifact-tag { background: rgba(224,53,53,0.15); color: var(--tag-1); }
+.artifact-card:nth-child(2) .artifact-tag { background: rgba(224,122,53,0.15); color: var(--tag-2); }
+.artifact-card:nth-child(3) .artifact-tag { background: rgba(201,54,90,0.15); color: var(--tag-3); }
 
 .artifact-course {
   font-family: var(--font-mono);
@@ -309,7 +309,7 @@ a:hover { text-decoration: underline; }
 .artifact-highlights code {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  background: rgba(79,142,247,0.1);
+  background: rgba(224,53,53,0.1);
   padding: 0.1rem 0.35rem;
   border-radius: 3px;
   color: var(--accent);
@@ -507,7 +507,7 @@ a:hover { text-decoration: underline; }
 .narrative-body code {
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  background: rgba(79,142,247,0.1);
+  background: rgba(224,53,53,0.1);
   padding: 0.15rem 0.4rem;
   border-radius: 3px;
   color: var(--accent);
