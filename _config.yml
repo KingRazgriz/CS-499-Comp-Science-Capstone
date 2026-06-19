@@ -1,13 +1,3 @@
 title: Jamar Sampson | CS ePortfolio
 description: Bachelor of Computer Science — Software Development. SNHU CS-499 Capstone ePortfolio.
 author: Jamar Sampson
-
-# Disable Jekyll theme so custom HTML/CSS renders directly
-theme: null
-
-# Tell GitHub Pages not to process these as Jekyll layouts
-exclude:
-  - "*.gemspec"
-  - Gemfile
-  - Gemfile.lock
-  - vendor/
