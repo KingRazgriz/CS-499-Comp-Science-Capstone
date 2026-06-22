@@ -463,6 +463,13 @@ a:hover { text-decoration: underline; }
   padding-top: 1.25rem;
 }
 
+.download-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
 /* ---- NARRATIVE PAGES ---- */
 .narrative-header {
   padding: 8rem 2.5rem 3rem;
